@@ -34,3 +34,9 @@ python3 pyGlobe.py
 ### Viewing the Mind Maps
 
 Make sure you install the markmap VS Code extension to view the markdown files! 
+
+### Examples
+
+![The World!](images/planet_earth.png)
+
+![Canada](images/canada.png)
