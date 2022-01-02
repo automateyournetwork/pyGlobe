@@ -1,0 +1,88 @@
+{%- for country in oneCountry %}
+# Country: {{ country.name.common }}
+## Official Name: {{ country.name.official }}
+## [Flag]({{ country.flags.png }})
+## [Coat of Arms]({{ country.coatOfArms.png }})
+## Top Level Domain: {{ country.tld }}
+{%-     for capital in country.capital %}
+## Capital: {{ capital }}
+{%-     endfor %}
+## Country Codes:
+### CCA2: {{ country.cca2 }}
+### CCN3: {{ country.ccn3 }}
+### CCA3: {{ country.cca3 }}
+### CIOC: {{ country.cioc }}
+## Independent: {{ country.independent }}
+## Status: {{ country.status }}
+## United Nations Member: {{ country.unMember }}
+## Currency
+{%-     for currency in country.currencies %}
+#### {{ currency }}
+##### Name: {{ country.currencies[currency].name }}
+##### Symbol: {{ country.currencies[currency].symbol }}
+{%-     endfor %}
+## Internation Direct Dialing
+### Root: {{ country.idd.root }}
+### Suffixes: {{ country.idd.suffixes }}
+{%-     if country.postalCode is defined %}
+## Postal Code
+### Format: {{ country.postalCode.format }}
+### Regular Expression: {{ country.postalCode.regex }}
+{%-     endif %}
+## Alternative Spellings
+{%-     for spelling in country.alSpellings %}
+### {{ spelling }}
+{%-     endfor %}
+## Region
+### {{ country.region }}
+### {{ country.subregion }}
+## Languages
+### {{ country.languages | replace('{\'','') | replace('\'','') | replace ('}','')  }}
+## Translations
+{%-     for translation in country.translations %}
+### {{ translation }}
+#### Official: {{ country.translations[translation].official }}
+#### Common: {{ country.translations[translation].common }}
+{%-     endfor %}
+## Latitude and Longitude
+### Latitude: {{ country.latlng[0] }}
+### Longitude: {{ country.latlng[1] }}
+{%-     if country.capitalInfo.latlng is defined %}
+### Capital Latitude: {{ country.capitalInfo.latlng[0] }}
+### Capital Longitude: {{ country.capitalInfo.latlng[1] }}
+{%-     endif %}
+## Landlocked: {{ country.landlocked }}
+## Borders
+{%-     for border in country.borders %}
+### {{ border }}
+{%-     endfor %}
+## Area: {{ country.area }}
+## Demonyms
+{%-     for demo in country.demonyms %}
+### Male: {{ demo }} {{ country.demonyms[demo].m }}
+### Female: {{ demo }} {{ country.demonyms[demo].f }}
+{%-     endfor %}
+## Flag: {{ country.flag }}
+## Maps
+### [Google Map]({{ country.maps.googleMaps }})
+### [Open Street Map]({{ country.maps.openStreetMaps }})
+## Population: {{ country.population }}
+{%-     if country.gini is defined %}
+## GINI: {{ country.gini | replace('{\'','') | replace('\'','') | replace ('}','')}}
+{%-     endif %}
+## FIFA: {{ country.fifa }}
+## Cars / Driving
+### Side: {{ country.car.side }}
+{%-     for sign in country.car.signs %}
+### Sign: {{ sign }}
+{%-     endfor %}
+## Timezones
+{%-     for timezone in country.timezones %}
+### {{ timezone }}
+{%-     endfor %}
+### Start of Week: {{ country.startOfWeek }}
+## Continents
+{%-     for continent in country.continents %}
+### {{ continent }}
+{%-     endfor %}
+{%- endfor %}
